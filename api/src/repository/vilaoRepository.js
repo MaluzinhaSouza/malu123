@@ -2,11 +2,15 @@ import {con} from './connection.js'
 
 export async function postarVilao (vilao){
     const comando = 
+
     `
     insert into tb_vilao (nm_vilao, ds_maldades, bt_poder )
     values(?,?,?);
     `
 
+
+
+    
     const [resposta] = await con.query(comando,[vilao.nome,vilao.maldades,vilao.poder]) 
     vilao.id = resposta.InsertID;
     return vilao;
